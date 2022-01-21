@@ -3,7 +3,7 @@
 SRG0 is a computer. Not a silicone binary traditional "computer" but an abstract machine concept
 that runs computations by iteratively applying simple text search and replace rules on an input string.  
 
-The name (I pronounce it "sir-gee-o" or "Sergio" like the famous Spanish golfer) nearly explains the entire concept:
+The name (I pronounce it "ser-gio" or "Sergio" like the famous Spanish golfer) nearly explains the entire concept:
 
 1. (S)earch the input for a rule match.
 2. (R)eplace the first occurrence of the fist rule to match with the rule's replacement text. 
