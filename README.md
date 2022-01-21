@@ -50,7 +50,7 @@ I found myself wondering what a "simple" Turing complete model of computation th
 The Wolfram hypergraph is super simple in its design, but it is amazingly difficult to "think" about how to do practical computation
 with the model.  
 
-I thought what if I "replaced the graph model with a simple "string of text" and kept the concept of
+I thought what if I "replaced the graph model with a simple string of text" and kept the concept of
 iteratively applying the simplest possible transformation rules to the string.  So the question was born.  Can you build
 a Turing complete "computer" based on the concept of iteratively applying string search and replace rules?
 
