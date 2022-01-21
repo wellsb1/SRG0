@@ -27,7 +27,7 @@ The SRG0 computation would be:
 ```
 INPUT: the dog chased the cat 
 -- START
-the dog chansed the dog
+the dog chased the dog
 the hello world chased the dog
 the hello world chased the hello world
 -- END
