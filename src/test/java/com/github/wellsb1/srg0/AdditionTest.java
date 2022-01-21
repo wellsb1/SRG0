@@ -84,7 +84,7 @@ public class AdditionTest {
 
 
     int sum(int num1, int num2) {
-        String num = new SRG0().loadRules("addition.rules").withDebug(true).runFile(num1 + "+" + num2);
+        String num = new SRG0().loadRules("addition.rules").withDebug(true).run(num1 + "+" + num2);
         return Integer.parseInt(num);
     }
 }
