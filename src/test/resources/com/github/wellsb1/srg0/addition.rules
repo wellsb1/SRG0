@@ -1,0 +1,282 @@
+//-- Copyright (c) 2021 Wells Burke
+//-- SPDX short identifier: MIT
+
+
+-- initiate move left least significant digit into adder
+0+ -> AL0
+1+ -> AL1
+2+ -> AL2
+3+ -> AL3
+4+ -> AL4
+5+ -> AL5
+6+ -> AL6
+7+ -> AL7
+8+ -> AL8
+9+ -> AL9
+
+-- continue move left least significant digit into adder
+L00 -> 0L0
+L01 -> 1L0
+L02 -> 2L0
+L03 -> 3L0
+L04 -> 4L0
+L05 -> 5L0
+L06 -> 6L0
+L07 -> 7L0
+L08 -> 8L0
+L09 -> 9L0
+L10 -> 0L1
+L11 -> 1L1
+L12 -> 2L1
+L13 -> 3L1
+L14 -> 4L1
+L15 -> 5L1
+L16 -> 6L1
+L17 -> 7L1
+L18 -> 8L1
+L19 -> 9L1
+L20 -> 0L2
+L21 -> 1L2
+L22 -> 2L2
+L23 -> 3L2
+L24 -> 4L2
+L25 -> 5L2
+L26 -> 6L2
+L27 -> 7L2
+L28 -> 8L2
+L29 -> 9L2
+L30 -> 0L3
+L31 -> 1L3
+L32 -> 2L3
+L33 -> 3L3
+L34 -> 4L3
+L35 -> 5L3
+L36 -> 6L3
+L37 -> 7L3
+L38 -> 8L3
+L39 -> 9L3
+L40 -> 0L4
+L41 -> 1L4
+L42 -> 2L4
+L43 -> 3L4
+L44 -> 4L4
+L45 -> 5L4
+L46 -> 6L4
+L47 -> 7L4
+L48 -> 8L4
+L49 -> 9L4
+L50 -> 0L5
+L51 -> 1L5
+L52 -> 2L5
+L53 -> 3L5
+L54 -> 4L5
+L55 -> 5L5
+L56 -> 6L5
+L57 -> 7L5
+L58 -> 8L5
+L59 -> 9L5
+L60 -> 0L6
+L61 -> 1L6
+L62 -> 2L6
+L63 -> 3L6
+L64 -> 4L6
+L65 -> 5L6
+L66 -> 6L6
+L67 -> 7L6
+L68 -> 8L6
+L69 -> 9L6
+L70 -> 0L7
+L71 -> 1L7
+L72 -> 2L7
+L73 -> 3L7
+L74 -> 4L7
+L75 -> 5L7
+L76 -> 6L7
+L77 -> 7L7
+L78 -> 8L7
+L79 -> 9L7
+L80 -> 0L8
+L81 -> 1L8
+L82 -> 2L8
+L83 -> 3L8
+L84 -> 4L8
+L85 -> 5L8
+L86 -> 6L8
+L87 -> 7L8
+L88 -> 8L8
+L89 -> 9L8
+L90 -> 0L9
+L91 -> 1L9
+L92 -> 2L9
+L93 -> 3L9
+L94 -> 4L9
+L95 -> 5L9
+L96 -> 6L9
+L97 -> 7L9
+L98 -> 8L9
+L99 -> 9L9
+
+
+-- add numbers
+0RL0 -> X0
+0RL1 -> X1
+0RL2 -> X2
+0RL3 -> X3
+0RL4 -> X4
+0RL5 -> X5
+0RL6 -> X6
+0RL7 -> X7
+0RL8 -> X8
+0RL9 -> X9
+1RL0 -> X1
+1RL1 -> X2
+1RL2 -> X3
+1RL3 -> X4
+1RL4 -> X5
+1RL5 -> X6
+1RL6 -> X7
+1RL7 -> X8
+1RL8 -> X9
+1RL9 -> C0
+2RL0 -> X2
+2RL1 -> X3
+2RL2 -> X4
+2RL3 -> X5
+2RL4 -> X6
+2RL5 -> X7
+2RL6 -> X8
+2RL7 -> X9
+2RL8 -> C0
+2RL9 -> C1
+3RL0 -> X3
+3RL1 -> X4
+3RL2 -> X5
+3RL3 -> X6
+3RL4 -> X7
+3RL5 -> X8
+3RL6 -> X9
+3RL7 -> C0
+3RL8 -> C1
+3RL9 -> C2
+4RL0 -> X4
+4RL1 -> X5
+4RL2 -> X6
+4RL3 -> X7
+4RL4 -> X8
+4RL5 -> X9
+4RL6 -> C0
+4RL7 -> C1
+4RL8 -> C2
+4RL9 -> C3
+5RL0 -> X5
+5RL1 -> X6
+5RL2 -> X7
+5RL3 -> X8
+5RL4 -> X9
+5RL5 -> C0
+5RL6 -> C1
+5RL7 -> C2
+5RL8 -> C3
+5RL9 -> C4
+6RL0 -> X6
+6RL1 -> X7
+6RL2 -> X8
+6RL3 -> X9
+6RL4 -> C0
+6RL5 -> C1
+6RL6 -> C2
+6RL7 -> C3
+6RL8 -> C4
+6RL9 -> C5
+7RL0 -> X7
+7RL1 -> X8
+7RL2 -> X9
+7RL3 -> C0
+7RL4 -> C1
+7RL5 -> C2
+7RL6 -> C3
+7RL7 -> C4
+7RL8 -> C5
+7RL9 -> C6
+8RL0 -> X8
+8RL1 -> X9
+8RL2 -> C0
+8RL3 -> C1
+8RL4 -> C2
+8RL5 -> C3
+8RL6 -> C4
+8RL7 -> C5
+8RL8 -> C6
+8RL9 -> C7
+9RL0 -> X9
+9RL1 -> C0
+9RL2 -> C1
+9RL3 -> C2
+9RL4 -> C3
+9RL5 -> C4
+9RL6 -> C5
+9RL7 -> C6
+9RL8 -> C7
+9RL9 -> C8
+
+
+
+-- continue move right least significant digit into adder
+R0 -> 0R
+R1 -> 1R
+R2 -> 2R
+R3 -> 3R
+R4 -> 4R
+R5 -> 5R
+R6 -> 6R
+R7 -> 7R
+R8 -> 8R
+R9 -> 9R
+
+-- initiate move right least significant digit into adder
+A0 -> BR0
+A1 -> BR1
+A2 -> BR2
+A3 -> BR3
+A4 -> BR4
+A5 -> BR5
+A6 -> BR6
+A7 -> BR7
+A8 -> BR8
+A9 -> BR9
+A  -> BR0 //no digits left on the right side so use a zero
+
+
+-- reset for nex operation
+B -> +
+
+
+-- apply a carry
+0C -> 1
+1C -> 2
+2C -> 3
+3C -> 4
+4C -> 5
+5C -> 6
+6C -> 7
+7C -> 8
+8C -> 9
+9C -> C0
+
+-- remove divider between partial sums
+X ->
+
+-- resolve final carry
+C -> 1
+
+-- remove final remaining extraneous addition sign
++0 -> 0
++1 -> 1
++2 -> 2
++3 -> 3
++4 -> 4
++5 -> 5
++6 -> 6
++7 -> 7
++8 -> 8
++9 -> 9

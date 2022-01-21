@@ -1,0 +1,208 @@
+/*
+  SUBLEQ - Subtract A from B if B <= 0 jump C
+
+FROM: https://rosettacode.org/wiki/Subleq#Java
+The program should load the initial contents of the emulated machine's memory, set the instruction pointer to the first address (which is defined to be address 0), and begin emulating the machine, which works as follows:
+1. Let A be the value in the memory location identified by the instruction pointer;   let B and C be the values stored in the next two consecutive addresses in memory.
+2. Advance the instruction pointer three words, to point at the address after the address containing C.
+3. If A is   -1   (negative unity),   then a character is read from the machine's input and its numeric value stored in the address given by B.   C is unused.
+4. If B is   -1   (negative unity),   then the number contained in the address given by A is interpreted as a character and written to the machine's output.   C is unused.
+5. Otherwise, both A and B are treated as addresses.
+    The number contained in address A is subtracted from the number in address B (and the difference left in address B).
+    If the result is positive, execution continues uninterrupted; if the result is zero or negative, the number in C becomes the new instruction pointer.
+6. If the instruction pointer becomes negative, execution halts.
+
+
+state symbols
+? - fetch a
+
+?a -
+?
+
+States
+-----------
+ START
+ END
+
+ @[ - program counter start state initiate subleq
+ ? - fetch A
+ * - fetch B
+ - - subtract A from B results into B
+
+
+[] - a memory address
+{} - register a
+() - register b
+
+s/a/b/0/1< - pushes a symbol to the start of the string stopping only
+s0/1 - turn around symbol, you sent 0/1s to the left to start seeing the address, turns around as A/B to seek address
+r0/1 - turn around symbol, you sent 0/0s to the left to then seek back to the next open register as C/D
+
+
+
+A/B - travel right to the next memory address
+X/Y - used to subtract/compare when seeking a memory address
+
+
+*/
+
+-- initiate operation at program counter
+@[ -> s<?{}[f
+
+-- push an 's' to the start
+0s< -> s<0
+1s< -> s<1
+]s< -> s<]
+[s< -> s<[
+?s< -> s<?
+}s< -> s<}
+{s< -> s<{
+)s< -> s<)
+(s< -> s<(
+
+-- push an 'r' to the start
+0r< -> r<0
+1r< -> r<1
+]r< -> r<]
+[r< -> r<[
+?r< -> r<?
+}r< -> r<}
+{r< -> r<{
+)r< -> r<)
+(r< -> r<(
+
+
+-- copy/bounce address to the left/start
+f0 -> 0<0f
+f1 -> 1<1f
+-- end of copy
+f] -> ]
+
+
+-- push a zero to the start
+00< -> 0<0
+10< -> 0<1
+[0< -> 0<[
+]0< -> 0<]
+?0< -> 0<?
+}0< -> 0<}
+{0< -> 0<{
+)0< -> 0<)
+(0< -> 0<(
+
+-- push a 1 to the start
+01< -> 1<0
+11< -> 1<1
+[1< -> 1<[
+]1< -> 1<]
+?1< -> 1<?
+}1< -> 1<}
+{1< -> 1<{
+)1< -> 1<)
+(1< -> 1<(
+
+
+-- the full address to search for has arrived.  Flip 0/1 for P/Q
+0< -> P
+1< -> Q
+
+-- seek, flip Q/A for A/B
+s<P -> s<A
+s<Q -> s<B
+AP -> AA
+AQ -> AB
+BP -> BA
+BQ -> BB
+s< ->
+
+-- register return, flip Q/A for C/D
+r<P -> r<C
+r<Q -> r<D
+CP -> CC
+CQ -> CD
+DP -> DC
+DQ -> DD
+r< ->
+
+
+-- move A to the end of the next memory address
+A[ -> [A
+A? -> ?A
+A0 -> 0A
+A1 -> 1A
+A{ -> {A
+A} -> }A
+
+
+-- move B to the end of the next memory address
+B[ -> [B
+B? -> ?B
+B0 -> 0B
+B1 -> 1B
+B{ -> {B
+B} -> }B
+
+-- move C to the end of the next register
+C{ -> {C
+C( -> (C
+C[ -> [C
+C] -> ]C
+C? -> ?C
+C0 -> 0C
+C1 -> 1C
+
+
+-- move D to the end of the next register
+D{ -> {D
+D( -> (D
+D[ -> [D
+D] -> ]D
+D? -> ?D
+D0 -> 0D
+D1 -> 1D
+
+
+
+
+-- the counter is not zero so send the now decremented value to the next address
+X] -> ]A
+Y] -> ]B
+
+-- subtract one each time you run into the end of a memory address
+B] -> x]
+A] -> b]
+
+/**
+ You convert to x/y so that all X and Y will arrive before you start shipping
+ A/B off to the next register before all of the A/Bs have arrived for this
+ computation
+*/
+-- convert to x/y to resolve borrowing
+Ax -> xx
+Ay -> xy
+Ab -> xb
+Bx -> yx
+By -> yy
+Bb -> xy
+
+-- resolve borrowing
+ybb -> xyx
+yb -> xy
+xb -> bb
+
+-- number not zero so convert back to X/Y to ship to next memory address
+x -> X
+y -> Y
+
+-- found zero but not sure home many bits are in our scheme
+bb -> b
+
+-- found the target address, bounce it back to the left to seek the register
+0b] -> w0]
+1b] -> w1]
+
+-- walk back to start of address to bounce value back to register
+0w -> w0
+1w -> w1
+[w -> r<[f
+
