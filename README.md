@@ -54,8 +54,8 @@ I thought what if I "replaced the graph model with a simple string of text" and 
 iteratively applying the simplest possible transformation rules to the string.  So the question was born.  Can you build
 a Turing complete "computer" based on the concept of iteratively applying string search and replace rules?
 
-As a proof of concept, I was able to get SRG0 to do simple decimal addition.  
-Given the input string "7+5" I was able to find a [set of rules](https://github.com/wellsb1/SRG0/blob/main/src/test/resources/com/github/wellsb1/srg0/addition.rules), 
+As a proof of concept, I was able to get SRG0 to do simple decimal addition. Given the input string "7+5" I was able 
+to find a [set of rules](https://github.com/wellsb1/SRG0/blob/main/src/test/resources/com/github/wellsb1/srg0/addition.rules), 
 that would transform the input into the output string "12".
 
 With the POC in hand, I suspected that SRG0 was Turing complete.  To be Turing complete, a language needs:
@@ -86,9 +86,6 @@ Fun stuff born out potentially misguided intellectual curiosity!
 searchString -> replaceString //slashes can be used after the replaceString to add comments to your "code"
 ```
 
-
-## Ok...But Why?
-TODO
 
 
 ## Pending Rule File Updates
