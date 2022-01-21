@@ -1,20 +1,52 @@
-#SRG0 - Search Replace Go 0 - pronounced as in the name "Sergio"
+## SRG0 - An Experiment in Esoteric Computation
 
-SRG0 is an experiment in esoteric programming languages.
+SRG0 is a computer. Not a silicone binary traditional "computer" but an abstract machine concept
+that runs computations by iteratively applying simple text search and replace rules on an input string.  
 
-The name just about explains the entire "computer".  You give SRG0 an input string and an ordered list of 
-simple search and replace rules.  No regular expressions, no variables.  SRG0 loops through the list of
-rules until a "search" string matches the input.  The "replace" value is swapped into input (the first 
-occurrence only) and then you "Go 0" meaning SRG0 goes back to the start of the rule list and loops again.
-The program halts when no more rules match.
+The name (I pronounce it "sir-gee-o" or "Sergio" like the famous Spanish golfer) nearly explains the entire concept:
 
-##Rule File (aka Your Program) Format
+1. (S)earch the input for a rule match.
+2. (R)eplace the first occurrence of the fist rule to match with the rule's replacement text. 
+3. After matching/replacing a rule, (G)o back to the start of your rule list (rule 0) and loop again.
+4. Computation ends when no more rules match and the transformed input is returned as output.
+
+Here is a simple SRG0 program:
+
+```
+cat -> dog
+dog -> hello world
+```
+
+Given the input string: 
+```
+the dog chased the cat
+```
+
+The SRGO computation would be:
+
+```
+INPUT: the dog chased the cat 
+-- START
+the dog chansed the dog
+the hello world chased the dog
+the hello world chased the hello world
+-- END
+OUTPUT: the hello world chased the hello world
+```
+
+
+## Rule File (aka Your Program) Format
 ```
 -- use to dashes to add a comment that will be printed out whenever a rule is applied.
 searchString -> replaceString //slashes can be used after the replaceString to add comments to your "code"
 ```
 
-##Pending Rule File Updates
+
+## Ok...But Why?
+TODO
+
+
+## Pending Rule File Updates
 
 global a b c def - these values may NOT be declared as local tokens as various files may use them
 

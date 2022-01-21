@@ -53,8 +53,8 @@ public class AdditionTest {
     @Test
     public void test_all_combinations_up_to_1000() {
         long start = System.currentTimeMillis();
-        int          maxTimes = 1001 * 1001;
-        SRG0Computer computer = new SRG0Computer().loadRules("addition.rules");
+        int  maxTimes = 1001 * 1001;
+        SRG0 computer = new SRG0().loadRules("addition.rules");
         computer.withDebug(false);
         int cycles = 0;
         for (int i = 0; i <= 1000; i++) {
@@ -75,7 +75,7 @@ public class AdditionTest {
             }
         }
         System.out.println("TOTAL TIME: " + (System.currentTimeMillis() - start) + "ms");
-        for(SRG0Computer.Rule rule : computer.getRules()){
+        for(SRG0.Rule rule : computer.getRules()){
             if(rule.getMatches() == 0){
                 System.out.println("UNUSED RULE: " + rule);
             }
@@ -84,7 +84,7 @@ public class AdditionTest {
 
 
     int sum(int num1, int num2) {
-        String num = new SRG0Computer().loadRules("addition.rules").withDebug(true).runFile(num1 + "+" + num2);
+        String num = new SRG0().loadRules("addition.rules").withDebug(true).runFile(num1 + "+" + num2);
         return Integer.parseInt(num);
     }
 }

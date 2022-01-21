@@ -10,7 +10,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-public class SRG0Computer {
+public class SRG0 {
 
     boolean    debug = false;
     List<Rule> rules = new ArrayList<>();
@@ -79,11 +79,11 @@ public class SRG0Computer {
         }
     }
 
-    public SRG0Computer loadRules(String ruleFilePath) {
+    public SRG0 loadRules(String ruleFilePath) {
         return loadRules(Utils.find(ruleFilePath));
     }
 
-    SRG0Computer loadRules(InputStream inputStream) {
+    SRG0 loadRules(InputStream inputStream) {
         List<Rule> rules = parseRules(inputStream);
         this.rules.addAll(rules);
         if (debug) {
@@ -207,7 +207,7 @@ public class SRG0Computer {
     }
 
 
-    public SRG0Computer withDebug(boolean debug) {
+    public SRG0 withDebug(boolean debug) {
         this.debug = debug;
         return this;
     }
